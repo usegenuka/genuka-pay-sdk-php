@@ -1,0 +1,12 @@
+vendor/
+.phpunit.cache/
+.phpunit.result.cache
+
+.env
+.env.*
+!.env.example
+
+composer.phar
+coverage/
+*.log
+.DS_Store
