@@ -9,6 +9,7 @@ use Genuka\Pay\Core\HttpTransport;
 use Genuka\Pay\Resources\CheckoutResource;
 use Genuka\Pay\Resources\PayinsResource;
 use Genuka\Pay\Resources\PayoutsResource;
+use Genuka\Pay\Resources\WebhookEndpointsResource;
 
 final class GenukaClient
 {
@@ -41,5 +42,10 @@ final class GenukaClient
     public function checkout(): CheckoutResource
     {
         return new CheckoutResource($this->http);
+    }
+
+    public function webhookEndpoints(): WebhookEndpointsResource
+    {
+        return new WebhookEndpointsResource($this->http);
     }
 }
