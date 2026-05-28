@@ -6,7 +6,7 @@ namespace Genuka\Pay\Core;
 
 final class HttpClient
 {
-    private const DEFAULT_BASE_URL = 'https://staging-api-pay.genuka.com';
+    private const DEFAULT_BASE_URL = 'https://api-pay.genuka.com';
 
     public function __construct(
         private readonly string $publicKey,

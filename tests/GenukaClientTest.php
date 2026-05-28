@@ -52,7 +52,7 @@ final class GenukaClientTest extends TestCase
         $client->payins()->list();
 
         self::assertSame(
-            'https://staging-api-pay.genuka.com/api/v1/payments',
+            'https://api-pay.genuka.com/api/v1/payments',
             $transport->requests[0]['url'],
         );
     }
