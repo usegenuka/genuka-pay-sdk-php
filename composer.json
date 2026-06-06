@@ -25,7 +25,12 @@
   "scripts": {
     "test": "phpunit",
     "test:unit": "phpunit --testsuite Unit",
-    "format": "pint"
+    "format": "pint",
+    "release": [
+      "@format",
+      "@test",
+      "bash scripts/release.sh"
+    ]
   },
   "config": {
     "sort-packages": true
