@@ -12,7 +12,14 @@ final class PayinsResource
     public function __construct(private readonly HttpClient $http) {}
 
     /**
-     * @param  array<string, mixed>  $payload
+     * @param  array{
+     *     amount: int|float,
+     *     currency: string,
+     *     payer_phone: string,
+     *     operator_code?: string,
+     *     external_id?: string,
+     *     metadata?: array{description?: string, customer_name?: string, ...}
+     * }  $payload
      */
     public function create(array $payload, ?string $idempotencyKey = null): mixed
     {

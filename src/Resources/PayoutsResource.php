@@ -12,7 +12,19 @@ final class PayoutsResource
     public function __construct(private readonly HttpClient $http) {}
 
     /**
-     * @param  array<string, mixed>  $payload
+     * @param  array{
+     *     amount: int|float,
+     *     currency: string,
+     *     country?: string,
+     *     payment_method_id?: string,
+     *     recipient_phone?: string,
+     *     operator_code?: string,
+     *     recipient_first_name?: string,
+     *     recipient_last_name?: string,
+     *     external_id?: string,
+     *     description?: string,
+     *     metadata?: array<string, mixed>
+     * }  $payload
      */
     public function create(array $payload, ?string $idempotencyKey = null): mixed
     {
