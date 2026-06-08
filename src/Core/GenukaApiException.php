@@ -18,30 +18,8 @@ final class GenukaApiException extends RuntimeException
 
     private function extractMessage(): string
     {
-        // Try to extract validation errors (422) from JSON response
-        if ($this->statusCode === 422 && is_string($this->responseBody)) {
-            $decoded = @json_decode($this->responseBody, true);
-            if (is_array($decoded) && isset($decoded['errors'])) {
-                $errors = [];
-                foreach ($decoded['errors'] as $field => $messages) {
-                    if (is_array($messages)) {
-                        $errors[] = implode(' ', $messages);
-                    } else {
-                        $errors[] = (string) $messages;
-                    }
-                }
-                if (! empty($errors)) {
-                    return implode(' | ', $errors);
-                }
-            }
-        }
-
-        // Try to extract message field from JSON response
-        if (is_string($this->responseBody)) {
-            $decoded = @json_decode($this->responseBody, true);
-            if (is_array($decoded) && isset($decoded['message'])) {
-                return $decoded['message'];
-            }
+        if (is_array($this->responseBody) && isset($this->responseBody['message'])) {
+            return $this->responseBody['message'];
         }
 
         return "Genuka API request failed with status {$this->statusCode}";
